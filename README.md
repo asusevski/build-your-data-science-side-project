@@ -2,7 +2,7 @@
 
 ![tmp](https://user-images.githubusercontent.com/77211520/214369609-0b1c2e09-f8fe-4582-8fa0-fa79130f7303.png)
 
-**TL;DR**: Goal was to predict, based on customer purchase history, whether the customer would default on their credit. Selected xgboost model which achived _% on test set. Some features that were highly predictive are:
+**TL;DR**: Goal was to predict, based on customer purchase history, whether the customer would default on their credit. Selected LGBM model which achived 0.491 score on test set with an F1 score of 0.88.
 
 The project is organized as follows:
 1. Background on problem space
@@ -19,6 +19,7 @@ The project is organized as follows:
     - Performance on different splits
     - Model Interpretability
     - Feature importance
+5. Limitations
 
 # Background on problem space
 ### Business problem:
@@ -69,7 +70,7 @@ It is always good to start with null values. While we have 189 variables, not in
 **Correlations**
 
 Looking at correlations, we get the following plot of correlations with the target:
-![tmp](https://user-images.githubusercontent.com/77211520/214922667-31cd6874-6915-40a4-8b85-d4ebd6449c11.png)
+![tmp](https://user-images.githubusercontent.com/77211520/214955511-2434bbc2-7332-47eb-af1d-5e3e6e008f02.png)
 
 Most features are not siginificantly correlated with the target. However, there are many features that are correlated with each other.
 ![tmp](https://user-images.githubusercontent.com/77211520/214926753-78c90057-71bb-420b-a0e2-0c5240e8cf96.png)
@@ -91,9 +92,34 @@ The features have already been standardized. However, since we're dealing with d
 for each customer and we need to aggregate their data in some way. We'll aggregate numerical features by calculating their mean and categorical features by count.
 
 # Models
-
+### Training Different Models
 Using **Lazy Classifier**, we tried 24 different models. Here are the results.
 
 ![tmp](https://user-images.githubusercontent.com/77211520/214947393-a5e1c668-2301-4afe-8edc-f151995a1ba5.png)
 
+Note that we have a custom metric for this challenge, however. So we'll re-test with correct metric with just the top 2 classifiers.
+LGB had a custom metric score of 0.4909679724727166 and XGB had a custom metric score of 0.48498807067754673. So, we choose LGB.
 
+# Model Analysis
+### Performance on Different splits
+This subpoint is a "model fairness" consideration, but the features have been anonymized so we don't have any meaningful splits.
+We'll analyze based on different ground truth labels instead by examining the confusion matrix.
+
+Confusion matrix:
+| Actual\Predicted | Negative | Positive |
+| ----------  | ------ | ---------  |
+|    Negative | 12425  | 1120       |
+|    Positive | 1139   | 3318       |
+
+So, we see the model had its struggles, failing to classify 1139 examples as positive in the test set. This has profound business implications, as this means 
+1139 customers are not paying back their loans.
+
+### Model Interpretability
+Fortunately, LightGBM is an inherently interpretable model by nature of it being random forest based.
+Examining model with **SHAP**, we see the following graph:
+
+### Feature Importance
+
+# Limitations
+This project was limited by the fact that we did not try aggregating the features for each customer in many ways. We just stuck with one, which is certainly 
+suboptimal.
