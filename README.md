@@ -115,11 +115,25 @@ So, we see the model had its struggles, failing to classify 1139 examples as pos
 1139 customers are not paying back their loans.
 
 ### Model Interpretability
-Fortunately, LightGBM is an inherently interpretable model by nature of it being random forest based.
-Examining model with **SHAP**, we see the following graph:
+Fortunately, LightGBM is an inherently interpretable model by nature of it being random forest based. 
 
 ### Feature Importance
+Examining model with **SHAP**, we see the following graph:
+
+![tmop](https://user-images.githubusercontent.com/77211520/214959834-60a3e701-3fde-4822-b1f7-6055413581fb.png)
+
+We have only one feature that contributes hugely to the prediction of our model!
+
+Examining in a dependence plot:
+
+![tmp](https://user-images.githubusercontent.com/77211520/214960027-b5a9ab16-4141-4d07-b2fa-b38edf36c4b0.png)
+
+Examining Permutation Importance as well, we have the following plot:
+
+![tmp](https://user-images.githubusercontent.com/77211520/214964551-887e66b2-f44a-4560-ba03-b633e6eac58f.png)
+
+As we saw earlier, there is one main feature that is important in predicting the values.
 
 # Limitations
 This project was limited by the fact that we did not try aggregating the features for each customer in many ways. We just stuck with one, which is certainly 
-suboptimal.
+suboptimal. For example, imagine if we had a customer who 
