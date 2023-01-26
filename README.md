@@ -66,8 +66,4 @@ The default rate captured at 4%, on the other hand, refers to the percentage of 
 First, exploring just the categorical variables. Note most of the categorical variables are under the Delinquency variables category, meaning they're likely very 
 important.
 
-![cat_vars](https://user-images.githubusercontent.com/77211520/214881916-9d6545a1-93e9-405f-b64d-68c2c1d7f211.png)
-
-
-
-
+![tmp](https://user-images.githubusercontent.com/77211520/214910958-98b07d55-e989-46f4-a10e-e5b043328617.png)
