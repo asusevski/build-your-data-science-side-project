@@ -10,6 +10,7 @@ The project is organized as follows:
     - Data science problem (background on problem space from a data scientists perspective)
 2. Data
     - Where we got the data from
+    - Evaluation metrics
     - EDA takeaways
     - Feature Engineering process
 3. Models
@@ -46,6 +47,20 @@ Ie:
 - P_* = Payment variables
 - B_* = Balance variables
 - R_* = Risk variables
+
+### Evaluation metrics
+The evaluation metric used for this competition was the mean of two other metrics. Specifically, it was the mean of the normalized Gini Coefficient and the default
+rate, captured at 4%.
+The **Normalized Gini Coefficent** is best explained with an image. 
+Suppose we have the following graph:
+
+![tmp](https://user-images.githubusercontent.com/77211520/214896228-eac118b5-c9c7-49ff-a7b8-54a4d69bb959.png)
+
+If the Orange area is "A" and the blue area is "B", the Gini Coefficient is calculated as $G=\frac{A}{A+B}$. The Normalized Gini Coefficient is calculated by simply dividing by the maximum possible Gini Coefficient , ie: $NG=\frac{1}{G_{max}}\frac{A}{A+B}$
+
+*Note*: the Gini Coefficient has a relationship to AUC, or Area Under the Curve. It can be calculated as $G=2*\text{AUC}-1$
+
+The default rate captured at 4%, on the other hand, refers to the percentage of positive labels captured in the highest ranked top 4% of predictions.
 
 ### EDA Takeaways
 First, exploring just the categorical variables. Note most of the categorical variables are under the Delinquency variables category, meaning they're likely very 
