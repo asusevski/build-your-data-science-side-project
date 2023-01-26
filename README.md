@@ -63,7 +63,30 @@ If the Orange area is "A" and the blue area is "B", the Gini Coefficient is calc
 The default rate captured at 4%, on the other hand, refers to the percentage of positive labels captured in the highest ranked top 4% of predictions.
 
 ### EDA Takeaways
-First, exploring just the categorical variables. Note most of the categorical variables are under the Delinquency variables category, meaning they're likely very 
-important.
 
-![tmp](https://user-images.githubusercontent.com/77211520/214910958-98b07d55-e989-46f4-a10e-e5b043328617.png)
+It is always good to start with null values. While we have 189 variables, not including target and customer ID, we have 67 variables with null values.
+
+**Correlations**
+
+Looking at correlations, we get the following plot of correlations with the target:
+![tmp](https://user-images.githubusercontent.com/77211520/214922667-31cd6874-6915-40a4-8b85-d4ebd6449c11.png)
+
+Most features are not siginificantly correlated with the target. However, there are many features that are correlated with each other.
+![tmp](https://user-images.githubusercontent.com/77211520/214926753-78c90057-71bb-420b-a0e2-0c5240e8cf96.png)
+
+This tells us we may want to consider removing some of these to reduce the dimensionality and improve training speed and model performance.
+
+**Categorical variables**. Exploring the categorical variables, note most of the categorical variables are under the Delinquency variables category, meaning they're likely very important.
+
+![tmp](https://user-images.githubusercontent.com/77211520/214927596-2de1f836-cde8-4993-9243-54561ad32705.png)
+
+**Numerical variables**. There are a lot of numeric variables, so to examine each of the variables, we look at:
+
+![tmp](https://user-images.githubusercontent.com/77211520/214931380-15a4c508-d200-4400-a207-3e34b13f9c3e.png)
+
+Note almost all variables have a very small variance. In fact, only 9 of the numeric variables have a variance bigger than 1.
+
+### Feature Engneering process:
+The features have already been standardized. However, since we're dealing with data at the customer level, we potentially have multiple rows 
+for each customer and we need to aggregate their data in some way. We'll aggregate numerical features b mean and categorical features by count.
+
