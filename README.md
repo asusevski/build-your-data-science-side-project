@@ -37,7 +37,22 @@ The data was released for Amex's Kaggle challenge, but upon first release it was
 dataset that transformed any floats to integer wherever it could be done without information loss. This, along with storing in a parquet file, allowed for the data to 
 be brought to a manageable 5GB, roughly.
 
+Here is a link to the post-processed data: https://www.kaggle.com/datasets/raddar/amex-data-integer-dtypes-parquet-format
+
+An important note about this dataset is we are never exactly told what each of the variables are, just the category they fall into.
+Ie:
+- D_* = Delinquency variables
+- S_* = Spend variables
+- P_* = Payment variables
+- B_* = Balance variables
+- R_* = Risk variables
+
 ### EDA Takeaways
+First, exploring just the categorical variables. Note most of the categorical variables are under the Delinquency variables category, meaning they're likely very 
+important.
+
+![cat_vars](https://user-images.githubusercontent.com/77211520/214881916-9d6545a1-93e9-405f-b64d-68c2c1d7f211.png)
 
 
-data: https://www.kaggle.com/datasets/raddar/amex-data-integer-dtypes-parquet-format
+
+
