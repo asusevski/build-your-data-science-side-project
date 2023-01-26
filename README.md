@@ -88,5 +88,12 @@ Note almost all variables have a very small variance. In fact, only 9 of the num
 
 ### Feature Engneering process:
 The features have already been standardized. However, since we're dealing with data at the customer level, we potentially have multiple rows 
-for each customer and we need to aggregate their data in some way. We'll aggregate numerical features b mean and categorical features by count.
+for each customer and we need to aggregate their data in some way. We'll aggregate numerical features by calculating their mean and categorical features by count.
+
+# Models
+
+Using **Lazy Classifier**, we tried 24 different models. Here are the results.
+
+![tmp](https://user-images.githubusercontent.com/77211520/214947393-a5e1c668-2301-4afe-8edc-f151995a1ba5.png)
+
 
