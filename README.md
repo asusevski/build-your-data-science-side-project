@@ -2,6 +2,9 @@
 
 ![tmp](https://user-images.githubusercontent.com/77211520/214369609-0b1c2e09-f8fe-4582-8fa0-fa79130f7303.png)
 
+*Put together as part of an introductory workshop series to demonstrate an example of a data science side project.*
+
+---
 **TL;DR**: Goal was to predict, based on customer purchase history, whether the customer would default on their credit. Selected LGBM model which achived 0.491 score on test set with an F1 score of 0.88.
 
 The project is organized as follows:
